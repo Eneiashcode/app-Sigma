@@ -1,2 +1,8 @@
-build:
-  command: npm install && npm run build
+services:
+  - type: web
+    name: sigma-app
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run dev
+    ports:
+      - "3000"  # Porta onde a aplicação estará escutando
