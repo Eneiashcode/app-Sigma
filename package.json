@@ -1,22 +1,22 @@
 {
-  "name": "sigma-app",
+  "name": "app-Sigma",
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "start": "vite preview"
+    "dev": "vite",                  // Rodar o Vite no modo desenvolvimento
+    "build": "vite build",           // Gerar o build de produção
+    "preview": "vite preview",       // Preview do build gerado
+    "start": "vite preview"          // Comando para rodar a aplicação em produção
   },
   "dependencies": {
-    "vite": "^4.3.9",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^7.4.1",
-    "lucide-react": "^0.487.0"
+    "vite": "^4.3.9",                // Vite como bundler
+    "react": "^18.2.0",              // React para a aplicação
+    "react-dom": "^18.2.0",          // React DOM para renderização
+    "react-router-dom": "^7.4.1",    // React Router para navegação
+    "lucide-react": "^0.487.0"       // Ícones do Lucide React
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.21",
-    "tailwindcss": "^3.3.2"
+    "autoprefixer": "^10.4.14",      // Autoprefixer para CSS
+    "postcss": "^8.4.21",            // PostCSS para CSS
+    "tailwindcss": "^3.3.2"          // Tailwind CSS para estilização
   }
 }
