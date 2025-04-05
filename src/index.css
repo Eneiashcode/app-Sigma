@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-sigma-dark text-sigma-gold font-sigma;
+  }
+
+  h1, h2, h3, h4 {
+    @apply text-sigma-gold;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .bg-sigma-light {
+    @apply bg-[#E6E2D3];
+  }
+
+  .text-sigma-dark {
+    @apply text-[#0F1C1C];
+  }
+}
+
+@media (max-width: 640px) {
+  .menu-items {
+    display: block;
+  }
+
+  .header {
+    text-align: center;
+  }
+}

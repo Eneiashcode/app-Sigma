@@ -1,11 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App'; // Aponta para o arquivo principal da aplicação
-import './index.css'; // Certifique-se de ter o Tailwind configurado
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+import { BrowserRouter } from 'react-router-dom'
 
-// Montando a aplicação no elemento com id "app"
-ReactDOM.createRoot(document.getElementById('app')).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
-);
+)
