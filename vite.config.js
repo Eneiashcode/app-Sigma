@@ -35,6 +35,7 @@ export default defineConfig({
   server: {
     port: 3001, // Porta do servidor
     host: '0.0.0.0', // Permite que o Vite escute em todas as interfaces de rede
+    allowedHosts: ['app-sigma.onrender.com'], // Adicione esta linha para permitir o host Render
   },
   build: {
     outDir: 'dist', // Pasta onde os arquivos de build vão ser gerados
