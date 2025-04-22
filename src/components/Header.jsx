@@ -1,9 +1,20 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Menu } from "lucide-react"
 
 export default function Header() {
   const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
+
+  const isAuthenticated = localStorage.getItem("logado") === "true"  // Verifica se o usuário está logado
+
+  const handlePanelClick = () => {
+    if (isAuthenticated) {
+      navigate("/painel")  // Se estiver logado, vai para o painel
+    } else {
+      navigate("/login")  // Se não estiver logado, redireciona para a página de login
+    }
+  }
 
   return (
     <header className="bg-sigma-dark text-sigma-gold border-b border-sigma-gold shadow-sm relative z-50">
@@ -26,9 +37,15 @@ export default function Header() {
           <Link to="/agendar" onClick={() => setOpen(false)} className="block lg:inline-block hover:text-white">
             📅 Agendar
           </Link>
-          <Link to="/painel" onClick={() => setOpen(false)} className="block lg:inline-block hover:text-white">
-            📊 Painel
-          </Link>
+          <span
+            onClick={() => {
+              handlePanelClick()  // Agora chama a função para verificar o login e redirecionar
+              setOpen(false)
+            }}
+            className="block lg:inline-block hover:text-white cursor-pointer"
+          >
+            📊 Painel (Login necessário)
+          </span>
           <Link to="/sobre" onClick={() => setOpen(false)} className="block lg:inline-block hover:text-white">
             ℹ️ Sobre
           </Link>

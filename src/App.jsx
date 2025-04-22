@@ -1,4 +1,3 @@
-// src/App.jsx
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Header from './components/Header'
@@ -7,6 +6,7 @@ import Servicos from './pages/Servicos'
 import Agendar from './pages/Agendar'
 import Login from './pages/Login'
 import Painel from './pages/Painel'
+import AddService from './pages/AddService'
 
 function App() {
   const isAuthenticated = localStorage.getItem('logado') === 'true'
@@ -19,10 +19,8 @@ function App() {
         <Route path="/servicos" element={<Servicos />} />
         <Route path="/agendar" element={<Agendar />} />
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/painel"
-          element={isAuthenticated ? <Painel /> : <Navigate to="/login" replace />}
-        />
+        <Route path="/painel" element={isAuthenticated ? <Painel /> : <Navigate to="/login" replace />} />
+        <Route path="/addservice" element={isAuthenticated ? <AddService /> : <Navigate to="/login" replace />} />
       </Routes>
     </div>
   )

@@ -1,4 +1,3 @@
-// src/pages/Login.jsx
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -17,8 +16,8 @@ export default function Login() {
     e.preventDefault()
 
     if (usuario === credenciais.usuario && senha === credenciais.senha) {
-      localStorage.setItem('logado', 'true')
-      navigate('/painel')
+      localStorage.setItem('logado', 'true')  // Salva o estado de login
+      navigate('/painel')  // Redireciona para o painel após login bem-sucedido
     } else {
       setErro('Usuário ou senha inválidos')
     }
@@ -31,14 +30,24 @@ export default function Login() {
       <form onSubmit={handleLogin} className="w-full max-w-xs bg-sigma-gold text-sigma-dark p-6 rounded-xl shadow space-y-4">
         <div>
           <label className="block text-sm mb-1">Usuário</label>
-          <input type="text" value={usuario} onChange={e => setUsuario(e.target.value)}
-            className="w-full p-2 rounded bg-white text-sigma-dark" required />
+          <input
+            type="text"
+            value={usuario}
+            onChange={e => setUsuario(e.target.value)}
+            className="w-full p-2 rounded bg-white text-sigma-dark"
+            required
+          />
         </div>
 
         <div>
           <label className="block text-sm mb-1">Senha</label>
-          <input type="password" value={senha} onChange={e => setSenha(e.target.value)}
-            className="w-full p-2 rounded bg-white text-sigma-dark" required />
+          <input
+            type="password"
+            value={senha}
+            onChange={e => setSenha(e.target.value)}
+            className="w-full p-2 rounded bg-white text-sigma-dark"
+            required
+          />
         </div>
 
         {erro && <p className="text-red-700 text-sm font-semibold">{erro}</p>}

@@ -1,35 +1,35 @@
-// src/pages/Agendar.jsx
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { fetchServices } from '../firebase'; // Certifique-se de que é 'fetchServices' e não 'getServices'
 
-const servicos = [
-  { id: 1, nome: 'Corte Masculino', preco: 45 },
-  { id: 2, nome: 'Barba Completa', preco: 30 },
-  { id: 3, nome: 'Corte + Barba', preco: 70 },
-  { id: 4, nome: 'Sobrancelha', preco: 15 },
-]
+const Agendar = () => {
+  const [servicos, setServicos] = useState([]);
+  const [selecionados, setSelecionados] = useState([]);
+  const [data, setData] = useState('');
+  const [hora, setHora] = useState('');
 
-const horarios = [
-  '09:00', '09:30', '10:00', '10:30',
-  '11:00', '11:30', '14:00', '14:30',
-  '15:00', '15:30', '16:00', '16:30'
-]
+  // Função para carregar os serviços do Firebase
+  const loadServices = async () => {
+    const services = await getServices();
+    setServicos(services);
+  };
 
-export default function Agendar() {
-  const [selecionados, setSelecionados] = useState([])
-  const [data, setData] = useState('')
-  const [hora, setHora] = useState('')
+  // Chama a função para carregar os serviços assim que a página for carregada
+  useEffect(() => {
+    loadServices();
+  }, []);
 
+  // Função para selecionar ou desmarcar serviços
   const toggleServico = (id) => {
     setSelecionados(prev =>
       prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]
-    )
-  }
+    );
+  };
 
+  // Função para calcular o total
   const total = selecionados.reduce((acc, id) => {
-    const servico = servicos.find(s => s.id === id)
-    return acc + (servico?.preco || 0)
-  }, 0)
+    const servico = servicos.find(s => s.id === id);
+    return acc + (servico?.preco || 0);
+  }, 0);
 
   return (
     <div className="p-6 max-w-screen-sm mx-auto">
@@ -58,9 +58,10 @@ export default function Agendar() {
         <label className="block mb-1 text-sm">⏰ Horário:</label>
         <select value={hora} onChange={e => setHora(e.target.value)} className="w-full p-2 rounded bg-sigma-light text-sigma-dark">
           <option value="">Selecione</option>
-          {horarios.map(h => (
-            <option key={h} value={h}>{h}</option>
-          ))}
+          <option value="09:00">09:00</option>
+          <option value="09:30">09:30</option>
+          <option value="10:00">10:00</option>
+          {/* Adicione os horários necessários */}
         </select>
       </div>
 
@@ -83,5 +84,7 @@ export default function Agendar() {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Agendar;
